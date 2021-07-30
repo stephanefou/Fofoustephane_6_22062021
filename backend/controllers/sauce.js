@@ -1,12 +1,10 @@
 const Sauce = require('../models/Sauce');
 
 exports.createSauce = (req, res, next) => {
+    const sauceObject = JSON.parse(req.body.sauce);
     const sauce = new Sauce({
-    title: req.body.title,
-    description: req.body.description,
-    imageUrl: req.body.imageUrl,
-    price: req.body.price,
-    userId: req.body.userId
+      ...sauceObject,
+      imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
   });
   sauce.save().then(
     () => {
@@ -42,11 +40,17 @@ exports.getOneSauce = (req, res, next) => {
 exports.modifySauce = (req, res, next) => {
   const sauce = new Sauce({
     _id: req.params.id,
-    title: req.body.title,
+    userId: req.body.userId,
+    name: req.body.name,
+    manufacturer: req.body.manufacturer,
     description: req.body.description,
+    mainPepper: req.body.mainPepper,
     imageUrl: req.body.imageUrl,
-    price: req.body.price,
-    userId: req.body.userId
+    heat: req.body.heat,
+    likes: 0,
+    dislikes: 0,
+    usersLiked: [],
+    usersDisliked: [],
   });
   Sauce.updateOne({_id: req.params.id}, thing).then(
     () => {
