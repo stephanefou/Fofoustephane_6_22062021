@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const stuffRoutes = require('./routes/sauce');
+const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user')
 
 mongoose.connect('mongodb+srv://stephane:Fm2o5A3g7uCaKhTX@cluster0.ciij3.mongodb.net/store?retryWrites=true&w=majority',
