@@ -9,3 +9,11 @@ const userSchema = mongoose.Schema({
 userSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('User', userSchema);
+
+/*
+- token d'identification/jsonwebtoken
+- Mongoose unique validator
+- Sanitizer/ express-validator
+- fonction d'encodage qui servira à l'email/function maskator(sentence)
+
+*/
