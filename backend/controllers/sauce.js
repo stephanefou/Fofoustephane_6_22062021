@@ -1,3 +1,5 @@
+  
+// Contient la logique métier concernant les sauces, à appliquer aux différentes routes CRUD
 const Sauce = require('../models/Sauce');
 const fs = require('fs');
 
@@ -62,35 +64,6 @@ exports.modifySauce = (req, res, next) => {
       .then(() => res.status(200).json({ message: 'Sauce modifiée !' }))
       .catch((error) => res.status(400).json({ error }))
 }
-/*exports.modifySauce = (req, res, next) => {
-  const sauce = new Sauce({
-    _id: req.params.id,
-    userId: req.body.userId,
-    name: req.body.name,
-    manufacturer: req.body.manufacturer,
-    description: req.body.description,
-    mainPepper: req.body.mainPepper,
-    imageUrl: req.body.imageUrl,
-    heat: req.body.heat,
-    likes: 0,
-    dislikes: 0,
-    usersLiked: [],
-    usersDisliked: [],
-  });
-  Sauce.updateOne({_id: req.params.id}, thing).then(
-    () => {
-      res.status(201).json({
-        message: 'Sauce updated successfully!'
-      });
-    }
-  ).catch(
-    (error) => {
-      res.status(400).json({
-        error: error
-      });
-    }
-  );
-};*/
 
 exports.deleteSauce = (req, res, next) => {
   Sauce.findOne({ _id: req.params.id })
